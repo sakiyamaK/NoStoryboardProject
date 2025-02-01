@@ -7,6 +7,8 @@
 
 import UIKit
 
+// エントリーポイント
+// 昔は @UIApplicationMain とかそんな名前だった
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+
+    // SceneDelegateに移行しますよという設定
 
     // MARK: UISceneSession Lifecycle
 

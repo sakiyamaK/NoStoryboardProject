@@ -6,47 +6,47 @@
 
 import UIKit
 
+// AppDelegateの仕様だけだと、その後のiPhoneやiPadの要件に応えられなくなってきたので別classができた
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var window2: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
+ 
+        let scene = scene as! UIWindowScene
+        
         //windowの生成
         let window = UIWindow(windowScene: scene)
+//        window.frame = .init(x: 100, y: 100, width: 300, height: 300)
         
-//        let vc = UIViewController()
-//        vc.view.backgroundColor = .red
+        let vc1 = UIViewController()
+        vc1.view.backgroundColor = .red
+        
+        window.rootViewController = vc1
 
-//        window.frame = UIScreen.main.bounds// デフォルトでフルスクリーン
-        // 直接座標と大きさを指定することでwindowサイズと位置を変更することができる
-        // ただしスマホアプリはフルスクリーンで表示することが普通なので変更することはない
-//        window.frame = CGRect(x: 10, y: 10, width: 300, height: 300)
-
-        // 表示させたい画面のViewControllerを用意する
-        // ユーザのログイン状態に合わせたりして最初の画面を切り替える
-        // 今回の例だと0か1のランダムで最初の画面が切り替わる
-        let vc: UIViewController
-        if Int.random(in: 0...1) == 0 {
-            vc = FirstViewController()
-        } else {
-            let secondVC = SecondViewController()
-            // 画面遷移を管理するUINavigationControllerもコードで設定できる
-            // UINavigationControllerはUIViewControllerの子クラスなのでvcに代入できる
-            vc = UINavigationController(rootViewController: secondVC)
-        }
-
-        // windowに最初に表示するviewcontrollerを代入する
-        window.rootViewController = vc
-
+//        let window2 = UIWindow(windowScene: scene)
+//        window2.frame = .init(x: 300, y: 300, width: 300, height: 300)
+//        
+//        let vc2 = UIViewController()
+//        vc2.view.backgroundColor = .green
+//        
+//        window2.rootViewController = vc2
+//        let vc = FirstViewController()
+//        let firstNav = UINavigationController(rootViewController: vc)
+//
+//        window.rootViewController = firstNav
+    
         // windowを画面に表示する
         // macだとwindowが複数あることが普通なので
         // どのwindowインスタンスがユーザ操作を受け付けるべきか指定しないといけない
         // iOSもその仕組みを受け継いで作られたOSなので指定がいる
         window.makeKeyAndVisible()
+//        window2.makeKeyAndVisible()
 
         // windowインスタンスが解放されないようにパラメータに代入する
         self.window = window
+//        self.window2 = window2
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

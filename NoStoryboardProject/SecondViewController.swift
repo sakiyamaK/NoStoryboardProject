@@ -12,13 +12,14 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
 
         // UIButtonのインスタンスを作り文字や色を設定する
-        let button = UIButton()
-        button.setTitle("second", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        
+        var buttonConfig = UIButton.Configuration.plain()
+        buttonConfig.title = "second"
+        buttonConfig.baseForegroundColor = .black
+        let button = UIButton(configuration: buttonConfig)
+
         // iOS14から追加されたボタンがタップされた時の実装の仕方
         // タップされた時のアクションインスタンスを作る
         let action = UIAction(handler: { _ in
@@ -47,3 +48,9 @@ class SecondViewController: UIViewController {
     }
 }
 
+
+#Preview {
+    UINavigationController(
+        rootViewController: SecondViewController()
+    )    
+}
